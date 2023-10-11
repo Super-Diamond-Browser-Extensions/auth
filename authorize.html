@@ -1,0 +1,16 @@
+<center><h1 id="title"></h1></center>
+<center><p>You will still be able to manage your extensions. by authorizing you will just give it permissions to manage extensions</p></center>
+<center><button onclick="authorize()">Authorize</button></center>
+<script>
+let params = new URL(location.href).searchParams;
+let hostname = params.get("host")[0];
+document.getElementById("title").innerHTML = hostname + " wants to manage your Super Diamond Browser Extensions"
+function authorize() {
+ if(localStorage.getItem("authorized-hosts") == null) {
+  localStorage.setItem("authorized-hosts", hostname)
+ }
+ else {
+  localStorage.setItem("authorized-hosts", localStorage.getItem("authorized-hosts") + "," + hostname)
+ }
+}
+</script>
